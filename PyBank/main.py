@@ -5,31 +5,23 @@ import csv
 budget_data = '/Users/HarpreetSingh/Desktop/Python-Challenge/budget_data.csv'
 
 
-def totals(col):
-    tot_profits = int(col[1])
-    tot_months = int(col[0])
-
-
 with open(budget_data, 'r') as budget_data:
     
-    csvreader1 = csv.reader(budget_data, delimiter=',')
+    csvreader = csv.reader(budget_data, delimiter=',')
     
-    header = next(csvreader1)
+    header = next(csvreader)
     
     profits = 0
     months = 0
-
+    avgchng = []
     # Loop through the data
-    for col in csvreader1:
+    for i, col in csvreader:
         profits += int(col[1])
-    print(f"Net Profit/Loss: ${profits}")
+        months += 1
+        avgchng =
 
-    for col in csvreader1:
-        months += col[0]
+    print("Financial Analysis\n------------------")
     print(f"Total Months: {months}")
-
-
-
-
+    print(f"Net Profit/Loss: ${profits}")
 
 
