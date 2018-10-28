@@ -27,7 +27,7 @@ with open(budget_data, newline="") as data:
    print("Total Months:", len(months))
    print("Total Profits:", sum(profits))
 
-   # i: 3
+
    for i in range(2,len(profits)):
        monthavg.append(profits[i] - profits[i-1])
        avgchange = sum(monthavg)/len(profits)
