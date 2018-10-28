@@ -5,28 +5,40 @@ import csv
 budget_data = '/Users/HarpreetSingh/Desktop/Python-Challenge/budget_data.csv'
 
 
-with open(budget_data, 'r') as budget_data:
-    
-    csvreader = csv.reader(budget_data, delimiter=',')
-    # skip header in csv file
-    next(csvreader)
-    
-    profits = 0
-    months = 0
-    change = [profits]
-    rev_change = []
-    # Loop through the data
-    for col in csvreader:
-        profits += int(col[1])
-        months += 1
-    for i in change:
-        rev_change.append(change[i] - change[i - 1])
-        avg_change = sum(rev_change) / len(rev_change)
+with open(budget_data, newline="") as data:
+   csvreader = csv.reader(data, delimiter=",")
 
-    print("Financial Analysis\n------------------")
-    print(f"Total Months: {months}")
-    print(f"Net Profit/Loss: ${profits}")
-    print(f"Average Change: {avg_change}")
 
+   next(csvreader)
+
+
+   monthavg = []
+   profits = []
+   months = []
+   avgchange = []
+
+
+   for col in csvreader:
+
+       months.append((col[0]))
+       profits.append(int(col[1]))
+
+
+   print("Total Months:", len(months))
+   print("Total Profits:", sum(profits))
+
+   # i: 3
+   for i in range(2,len(profits)):
+       monthavg.append(profits[i] - profits[i-1])
+       avgchange = sum(monthavg)/len(profits)
+
+       max_profit = max(profits)
+       min_profit = min(profits)
+
+
+
+   print("Average Profits per Month: $", avgchange)
+   print("Best Profit: $", max_profit)
+   print("Worst Profit: $", min_profit)
 
 
